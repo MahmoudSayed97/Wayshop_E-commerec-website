@@ -73,7 +73,9 @@ Route::group(['middleware'=>['auth']],function(){
     Route::match(['get','post'],'/admin/delete-coupon/{id}','CouponsController@deleteCoupon');
     Route::match(['get','post'],'/admin/edit-coupon/{id}','CouponsController@editCoupon');
     Route::post('/admin/update-coupon-status','CouponsController@updateCouponStatus');
-    //apply Coupon code
+    //routes of checkout
+    Route::match(['get','post'],'/checkout','productController@checkout');
+
 
 });
 Route::match(['get','post'],'/cart/apply-coupon','productController@applyCoupon');
