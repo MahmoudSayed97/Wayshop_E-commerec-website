@@ -259,5 +259,8 @@ class productController extends Controller
 
         }
     }
+    public function checkout(){
+        return view('wayshop.products.checkout');
+    }
     }
 
