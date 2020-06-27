@@ -11,6 +11,9 @@
 |
 */
 
+
+Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware'=>[ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
+
 Route::match(['get','post'],'/','IndexController@index');
 Route::get('categories/{cat_id}','IndexController@categories');
 Route::match(['get','post'],'/admin','adminController@login');
@@ -55,7 +58,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::match(['get','post'],'/cart/delete-product/{id}','productController@deleteCartProduct');
     //route of update product quantity
     Route::get('/cart/update-quantity/{id}/{quantity}','productController@updateQuantityCart');
-    //routes ofproducts attributes
+    //routes of products attributes
     Route::match(['get','post'],'/admin/add-attributes/{id}','productController@addAtrribute');
     Route::match(['get','post'],'/admin/edit-attributes/{id}','productController@editAttribut');
     Route::match(['get','post'],'/admin/delete-attributes/{id}','productController@deleteAtrribute');
@@ -79,5 +82,7 @@ Route::group(['middleware'=>['auth']],function(){
 
 });
 Route::match(['get','post'],'/cart/apply-coupon','productController@applyCoupon');
+
+});
 
 
