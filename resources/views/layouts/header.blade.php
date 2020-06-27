@@ -71,6 +71,15 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('front_assets/images/logo.png')}}" class="logo" alt=""></a>
+                <ul>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li>
+                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
             <!-- End Header Navigation -->
 
